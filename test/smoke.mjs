@@ -23,7 +23,8 @@ const ast = {
 const adapter = createClangNativeImporterAdapter();
 assert.equal(adapter.language, ClangSourceLanguage);
 assert.equal(ClangLanguagePackage.parserAstFormat, ClangParserAstFormat);
-assert.equal(ClangLanguagePackage.compilerVersion, '0.2.42');
+assert.equal(ClangLanguagePackage.version, '0.1.6');
+assert.equal(ClangLanguagePackage.compilerVersion, '0.2.47');
 
 const imported = await importClangSource({
   sourcePath: 'src/todo.c',

@@ -13,13 +13,13 @@ export const ClangSupportedExtensions = Object.freeze(['.c', '.h', '.cc', '.cpp'
 
 export const ClangLanguagePackage = Object.freeze({
   packageName: '@shapeshift-labs/frontier-lang-clang',
-  version: '0.1.3',
+  version: '0.1.6',
   sourceLanguage: ClangSourceLanguage,
   parser: ClangParser,
   parserAstFormat: ClangParserAstFormat,
   supportedExtensions: ClangSupportedExtensions,
   compilerPackage: '@shapeshift-labs/frontier-lang-compiler',
-  compilerVersion: '0.2.42'
+  compilerVersion: '0.2.47'
 });
 
 export const ClangCapabilityLanguageProfiles = Object.freeze(
