@@ -4,6 +4,7 @@ import {
   ClangParserAstFormat,
   ClangSourceLanguage,
   createClangNativeImporterAdapter,
+  createClangLanguageCapabilityMatrix,
   importClangSource,
   createClangSemanticImportSidecar
 } from '../dist/index.js';
@@ -22,6 +23,7 @@ const ast = {
 const adapter = createClangNativeImporterAdapter();
 assert.equal(adapter.language, ClangSourceLanguage);
 assert.equal(ClangLanguagePackage.parserAstFormat, ClangParserAstFormat);
+assert.equal(ClangLanguagePackage.compilerVersion, '0.2.39');
 
 const imported = await importClangSource({
   sourcePath: 'src/todo.c',
@@ -33,6 +35,14 @@ assert.equal(imported.adapter.parser, 'clang');
 assert.equal(imported.metadata.astFormat, 'clang-ast-json');
 assert.equal(imported.semanticIndex.symbols.some((symbol) => symbol.name === 'from_c' && symbol.kind === 'function'), true);
 assert.equal(imported.metadata.nativeImportLossSummary.exactAst, true);
+
+const capability = createClangLanguageCapabilityMatrix({ imports: [imported], targets: ['typescript', 'rust'] });
+assert.equal(capability.kind, 'frontier.lang.universalCapabilityMatrix');
+assert.equal(capability.languages.length, 2);
+assert.equal(capability.languages.some((row) => row.language === 'c'), true);
+assert.equal(capability.languages.some((row) => row.language === 'cpp'), true);
+assert.equal(capability.summary.imports, 1);
+assert.equal(capability.summary.targetEntries, 4);
 
 const sidecar = await createClangSemanticImportSidecar({
   sourcePath: 'src/todo.c',

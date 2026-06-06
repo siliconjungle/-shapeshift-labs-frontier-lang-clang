@@ -1,18 +1,21 @@
 import {
   ClangLanguagePackage,
   createClangNativeImporterAdapter,
+  createClangLanguageCapabilityMatrix,
   importClangSource,
   createClangSemanticImportSidecar
 } from '../src/index.js';
 import type {
+  ClangLanguageCapabilityMatrixOptions,
   ClangSourceImportInput,
   ClangSourceImportOptions,
   ClangSemanticImportSidecarOptions
 } from '../src/index.js';
-import type { NativeImporterAdapter } from '@shapeshift-labs/frontier-lang-compiler';
+import type { NativeImporterAdapter, UniversalCapabilityMatrix } from '@shapeshift-labs/frontier-lang-compiler';
 
 const adapter: NativeImporterAdapter = createClangNativeImporterAdapter();
 const input: ClangSourceImportInput = { sourceText: '', ast: {} };
+const capabilityOptions: ClangLanguageCapabilityMatrixOptions = { targets: ['typescript'] };
 const parserInput: ClangSourceImportInput = {
   sourceText: '',
   importerOptions: {
@@ -35,9 +38,12 @@ const sidecarOptions: ClangSemanticImportSidecarOptions = {
   }
 };
 const packageName: '@shapeshift-labs/frontier-lang-clang' = ClangLanguagePackage.packageName;
+const capability: UniversalCapabilityMatrix = createClangLanguageCapabilityMatrix(capabilityOptions);
 
 void adapter;
 void input;
+void capabilityOptions;
+void capability;
 void parserInput;
 void options;
 void sidecarOptions;

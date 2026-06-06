@@ -1,6 +1,8 @@
 import {
+  NativeImportLanguageProfiles,
   createClangAstNativeImporterAdapter,
   createSemanticImportSidecar,
+  createUniversalCapabilityMatrix,
   runNativeImporterAdapter
 } from '@shapeshift-labs/frontier-lang-compiler';
 
@@ -11,19 +13,29 @@ export const ClangSupportedExtensions = Object.freeze(['.c', '.h', '.cc', '.cpp'
 
 export const ClangLanguagePackage = Object.freeze({
   packageName: '@shapeshift-labs/frontier-lang-clang',
-  version: '0.1.0',
+  version: '0.1.1',
   sourceLanguage: ClangSourceLanguage,
   parser: ClangParser,
   parserAstFormat: ClangParserAstFormat,
   supportedExtensions: ClangSupportedExtensions,
   compilerPackage: '@shapeshift-labs/frontier-lang-compiler',
-  compilerVersion: '0.2.31'
+  compilerVersion: '0.2.39'
 });
+
+export const ClangCapabilityLanguageProfiles = Object.freeze(
+  NativeImportLanguageProfiles.filter((profile) => profile.language === 'c' || profile.language === 'cpp')
+);
 
 export { createClangAstNativeImporterAdapter } from '@shapeshift-labs/frontier-lang-compiler';
 
 export function createClangNativeImporterAdapter(options = {}) {
   return createClangAstNativeImporterAdapter(options);
+}
+
+export function createClangLanguageCapabilityMatrix(options = {}) {
+  const languages = options.languages ?? ClangCapabilityLanguageProfiles;
+  const adapters = options.adapters ?? [createClangNativeImporterAdapter(options.importerOptions ?? {})];
+  return createUniversalCapabilityMatrix({ ...options, languages, adapters });
 }
 
 function mergeAdapterOptions(input = {}, options = {}) {

@@ -2,8 +2,11 @@ import type {
   ClangAstNativeImporterAdapterOptions,
   NativeImporterAdapter,
   NativeImporterAdapterImportResult,
+  NativeImportLanguageProfile,
   SemanticImportSidecar,
-  SemanticImportSidecarOptions
+  SemanticImportSidecarOptions,
+  UniversalCapabilityMatrix,
+  UniversalCapabilityMatrixOptions
 } from '@shapeshift-labs/frontier-lang-compiler';
 
 export declare const ClangSourceLanguage: 'c';
@@ -13,16 +16,17 @@ export declare const ClangSupportedExtensions: readonly string[];
 
 export interface ClangLanguagePackageMetadata {
   readonly packageName: '@shapeshift-labs/frontier-lang-clang';
-  readonly version: '0.1.0';
+  readonly version: '0.1.1';
   readonly sourceLanguage: 'c';
   readonly parser: 'clang';
   readonly parserAstFormat: 'clang-ast-json';
   readonly supportedExtensions: readonly string[];
   readonly compilerPackage: '@shapeshift-labs/frontier-lang-compiler';
-  readonly compilerVersion: '0.2.31';
+  readonly compilerVersion: '0.2.39';
 }
 
 export declare const ClangLanguagePackage: ClangLanguagePackageMetadata;
+export declare const ClangCapabilityLanguageProfiles: readonly NativeImportLanguageProfile[];
 
 export { createClangAstNativeImporterAdapter } from '@shapeshift-labs/frontier-lang-compiler';
 
@@ -61,6 +65,11 @@ export interface ClangSemanticImportSidecarOptions extends ClangSourceImportOpti
   readonly regionPrefix?: string;
 }
 
+export interface ClangLanguageCapabilityMatrixOptions extends UniversalCapabilityMatrixOptions {
+  readonly importerOptions?: ClangAstNativeImporterAdapterOptions;
+}
+
 export declare function createClangNativeImporterAdapter(options?: ClangAstNativeImporterAdapterOptions): NativeImporterAdapter;
+export declare function createClangLanguageCapabilityMatrix(options?: ClangLanguageCapabilityMatrixOptions): UniversalCapabilityMatrix;
 export declare function importClangSource(input?: ClangSourceImportInput, options?: ClangSourceImportOptions): Promise<NativeImporterAdapterImportResult>;
 export declare function createClangSemanticImportSidecar(input?: ClangSourceImportInput, options?: ClangSemanticImportSidecarOptions): Promise<SemanticImportSidecar>;
