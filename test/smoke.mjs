@@ -23,7 +23,7 @@ const ast = {
 const adapter = createClangNativeImporterAdapter();
 assert.equal(adapter.language, ClangSourceLanguage);
 assert.equal(ClangLanguagePackage.parserAstFormat, ClangParserAstFormat);
-assert.equal(ClangLanguagePackage.version, '0.1.7');
+assert.equal(ClangLanguagePackage.version, '0.1.8');
 assert.equal(ClangLanguagePackage.compilerVersion, '0.2.64');
 
 const imported = await importClangSource({

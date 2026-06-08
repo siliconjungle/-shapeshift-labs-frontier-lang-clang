@@ -16,7 +16,7 @@ export declare const ClangSupportedExtensions: readonly string[];
 
 export interface ClangLanguagePackageMetadata {
   readonly packageName: '@shapeshift-labs/frontier-lang-clang';
-  readonly version: '0.1.7';
+  readonly version: '0.1.8';
   readonly sourceLanguage: 'c';
   readonly parser: 'clang';
   readonly parserAstFormat: 'clang-ast-json';

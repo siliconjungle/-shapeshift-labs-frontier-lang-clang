@@ -268,4 +268,4 @@ Run the package-local benchmark with:
 npm run bench
 ```
 
-These measurements exercise only this package's importer wrapper and semantic sidecar helpers.
+These are Frontier-only package measurements for @shapeshift-labs/frontier-lang-clang. They exercise only this package's importer wrapper and semantic sidecar helpers without making competitor comparison claims.

@@ -13,7 +13,7 @@ export const ClangSupportedExtensions = Object.freeze(['.c', '.h', '.cc', '.cpp'
 
 export const ClangLanguagePackage = Object.freeze({
   packageName: '@shapeshift-labs/frontier-lang-clang',
-  version: '0.1.7',
+  version: '0.1.8',
   sourceLanguage: ClangSourceLanguage,
   parser: ClangParser,
   parserAstFormat: ClangParserAstFormat,
