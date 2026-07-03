@@ -16,13 +16,13 @@ export declare const ClangSupportedExtensions: readonly string[];
 
 export interface ClangLanguagePackageMetadata {
   readonly packageName: '@shapeshift-labs/frontier-lang-clang';
-  readonly version: '0.1.19';
+  readonly version: '0.1.20';
   readonly sourceLanguage: 'c';
   readonly parser: 'clang';
   readonly parserAstFormat: 'clang-ast-json';
   readonly supportedExtensions: readonly string[];
   readonly compilerPackage: '@shapeshift-labs/frontier-lang-compiler';
-  readonly compilerVersion: '0.2.331';
+  readonly compilerVersion: '0.2.351';
 }
 
 export declare const ClangLanguagePackage: ClangLanguagePackageMetadata;
